@@ -1,5 +1,5 @@
 const images = document.querySelectorAll(".image");
-let currentImage = 0; // should start at 0;
+let currentImage = 0;
 
 const rightButton = document.getElementById("rightButton");
 const leftButton = document.getElementById("leftButton");
@@ -38,5 +38,14 @@ function playPause() {
 /*
 function dotNav(dotIndex){
   changeImage(dotIndex);
+  // dots should be ordered list, so that they come out as a NodeList with indexes.
 }
+*/
+
+
+/*
+TODO: add dot navigation
+TODO: see whether this works with differently-sized images. It might.
+TODO: add caption support?
+
 */
