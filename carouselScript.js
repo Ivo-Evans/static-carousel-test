@@ -35,12 +35,10 @@ function playPause() {
 }
 
 const dots = document.body.querySelector(".carousel_dots_set");
-// dots.addEventListener('click', (e) => dotNav(e));
 dots.addEventListener('click', dotNav);
 
 function dotNav(event) {
   let target = event.target;
-  console.log(target);
   try {changeImage(target.innerText - 1)}
   catch(err) {changeImage(currentImage)}
 }
