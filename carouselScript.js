@@ -47,5 +47,7 @@ function dotNav(dotIndex){
 TODO: add dot navigation
 TODO: see whether this works with differently-sized images. It might.
 TODO: add caption support?
-
+TODO: investigate using JS to animate the transtition??? Therefore going above and beyond the objectives of this expedition? For instance, you could send the old image 50000 pixels (maybe thats too much lol) to the left/right - but then how would you get the new one from the other side??
+TODO: style buttons
+TODO: make mobile-friendly controls. I believe there's some kind of touch event. You can set controls to display: none; on mobile version, and add event listeners for swipes left and right (I hope)
 */
