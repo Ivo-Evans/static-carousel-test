@@ -35,7 +35,8 @@ function playPause() {
 }
 
 const dots = document.body.querySelector(".carousel_dots_set");
-dots.addEventListener('click', (e) => dotNav(e));
+// dots.addEventListener('click', (e) => dotNav(e));
+dots.addEventListener('click', dotNav);
 
 function dotNav(event) {
   let target = event.target;
