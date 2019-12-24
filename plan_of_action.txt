@@ -1,0 +1,16 @@
+HTML and CSS:
+- import images
+- check that they display in a column/row on both stylesheets
+- stack images one on top of the other so that only one displays (optional?)
+- create two classes, one with display: none, one which displays
+- set all but the first image to display: none, with classes
+- create right/left buttons
+- check all is displaying well, on both mobile and desktop
+
+JavaScript:
+- create index tracking variable, initialised to 0.
+- write function that: 
+  - iterates through every image, setting them all to display: none;
+  - sets the image at the index provided as an argument to display
+  - sets the index-tracking variable to whatever number is provided to the function
+- add event handlers associated with left and right buttons that call the above function with current index plus or minus 1
