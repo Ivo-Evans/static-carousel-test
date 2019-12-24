@@ -10,3 +10,6 @@ function changeImage(to) {
 
 const rightButton = document.getElementById("rightButton");
 const leftButton = document.getElementById("leftButton");
+
+leftButton.addEventListener('click', () => (changeImage(currentImage - 1)));
+rightButton.addEventListener('click', () => (changeImage(currentImage + 1)));
