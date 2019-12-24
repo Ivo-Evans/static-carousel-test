@@ -12,7 +12,6 @@ function moveRight() { // I believe that this is the event *handler*, and the ev
 }
 
 function moveLeft() {
-  console.log(currentImage);
   currentImage <= 0 ? changeImage(images.length - 1) : changeImage(currentImage - 1);
 }
 
@@ -40,20 +39,11 @@ dots.addEventListener('click', (e) => dotNav(e));
 
 function dotNav(event) {
   let target = event.target;
+  console.log(target);
   try {changeImage(target.innerText - 1)}
   catch(err) {changeImage(currentImage)}
 }
-
 /*
-function dotNav(dotIndex){
-  changeImage(dotIndex);
-  // dots should be ordered list, so that they come out as a NodeList with indexes.
-}
-*/
-
-
-/*
-TODO: add dot navigation
 TODO: see whether this works with differently-sized images. It might.
 TODO: add caption support?
 TODO: investigate using JS to animate the transtition??? Therefore going above and beyond the objectives of this expedition? For instance, you could send the old image 50000 pixels (maybe thats too much lol) to the left/right - but then how would you get the new one from the other side??
