@@ -24,6 +24,16 @@ function moveLeft() {
   currentImage <= 0 ? changeImage(images.length - 1) : changeImage(currentImage - 1);
 }
 
+const playPauseButton = document.getElementById("playPause");
+playPauseButton.addEventListener('click', playPause);
+let play = setInterval(() => moveRight(), 5000);
+let playing = true
+
+function playPause() {
+  playing ? clearInterval(play) : play = setInterval(() => moveRight(), 5000) ;
+  playing = !playing;
+}
+
 /*
 function dotNav(dotIndex){
   changeImage(dotIndex);
