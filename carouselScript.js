@@ -7,7 +7,7 @@ const leftButton = document.getElementById("leftButton");
 rightButton.addEventListener('click', moveRight);
 leftButton.addEventListener('click', moveLeft);
 
-function moveRight() {
+function moveRight() { // I believe that this is the event *handler*, and the event listener has no binding.
   currentImage >= images.length - 1 ? changeImage(0) : changeImage(currentImage + 1);
 }
 
@@ -33,6 +33,14 @@ playPauseButton.addEventListener('click', playPause);
 function playPause() {
   playing ? clearInterval(play) : play = setInterval(() => moveRight(), 5000) ;
   playing = !playing;
+}
+
+dots.addEventListener('click', (e) => dotNav(e));
+
+function dotNav(event) {
+  let target = event.target;
+  try {changeImage(target.innerText - 1)}
+  catch(err) {changeImage(currentImage)}
 }
 
 /*
