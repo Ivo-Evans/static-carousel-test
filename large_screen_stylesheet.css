@@ -29,7 +29,14 @@
 .carousel_dots_set button {
   border-radius: 50%;
   display: inline-block;
-  color: green;
+  color: #868686; /* font-color is just 'color' */
+  background-color: #868686;
+  margin-left: 3px;
+}
+
+.carousel_dots_set button:hover {
+  background-color: #000;
+  color: #000;
 }
 
 /* old stuff */
