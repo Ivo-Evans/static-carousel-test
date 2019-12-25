@@ -10,7 +10,7 @@ rightButton.addEventListener('click', moveRight);
 leftButton.addEventListener('click', moveLeft);
 
 function moveRight() { // I believe that this is the event *handler*, and the event listener has no binding.
-  console.log("moveRight thinks currentImage is " + currentImage)
+  // console.log("moveRight thinks currentImage is " + currentImage)
   currentImage >= images.length - 1 ? changeImage(0) : changeImage(+currentImage + 1); //  notice type conversion. It is important, because moveRight was sometimes calling changeImage(41) or (61).
 }
 
@@ -25,7 +25,7 @@ function changeImage(to) {
   images[to].classList.remove("hidden_image");
   images[to].classList.add("visible_image"); // perhaps this process could be optimised, bearing in mind CSS class precedence (a given thing can have two incompatible classes and the later declaration takes precedence)
   currentImage = to;
-  console.log("after changeImage's work, currentImage is " + currentImage);
+  // console.log("after changeImage's work, currentImage is " + currentImage);
 }
 
 let play = setInterval(() => moveRight(), 5000);
@@ -46,11 +46,11 @@ function dotNav(event) {
   let target = event.target;
   // try {changeImage(target.innerText - 1)}
   try {
-    console.log("dotNav is trying to call changeImage with " + target.id);
+    // console.log("dotNav is trying to call changeImage with " + target.id);
     changeImage(target.id)
   }
   catch(err) {
-    console.log("dotNav was called couldn't call changeImage with a button ID, is calling chaneImage with " + currentImage);
+    // console.log("dotNav was called couldn't call changeImage with a button ID, is calling chaneImage with " + currentImage);
     changeImage(currentImage)}
 }
 /*

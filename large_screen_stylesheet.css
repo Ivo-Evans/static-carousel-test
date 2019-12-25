@@ -35,12 +35,15 @@
   background-color: #e6e6e6;
   margin-left: 7px;
   outline: none;
+  height: 12px;
+  width: 2px;
+  /* If you are sizing height and width by px, 11 5 or 12 5 seems circle-like. In fact - interestingly - height 12 seems to be required for the circle. */
 }
 
 .carousel_dots_set button:hover {
   background-color: #868686;
   color: #868686;
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 /* old stuff */
