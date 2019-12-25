@@ -1,3 +1,5 @@
+'use strict';
+
 const images = document.querySelectorAll(".image");
 let currentImage = 0;
 
@@ -8,19 +10,22 @@ rightButton.addEventListener('click', moveRight);
 leftButton.addEventListener('click', moveLeft);
 
 function moveRight() { // I believe that this is the event *handler*, and the event listener has no binding.
-  currentImage >= images.length - 1 ? changeImage(0) : changeImage(currentImage + 1);
+  console.log("moveRight thinks currentImage is " + currentImage)
+  currentImage >= images.length - 1 ? changeImage(0) : changeImage(+currentImage + 1); //  notice type conversion. It is important, because moveRight was sometimes calling changeImage(41) or (61).
 }
 
 function moveLeft() {
-  currentImage <= 0 ? changeImage(images.length - 1) : changeImage(currentImage - 1);
+  currentImage <= 0 ? changeImage(images.length - 1) : changeImage(+currentImage - 1);
 }
 
 function changeImage(to) {
+  console.log("changeImage is trying to change the image to " + to);
   Array.from(images).forEach(im => im.classList.remove("visible_image"));
   Array.from(images).forEach(im => im.classList.add("hidden_image"));
   images[to].classList.remove("hidden_image");
   images[to].classList.add("visible_image"); // perhaps this process could be optimised, bearing in mind CSS class precedence (a given thing can have two incompatible classes and the later declaration takes precedence)
   currentImage = to;
+  console.log("after changeImage's work, currentImage is " + currentImage);
 }
 
 let play = setInterval(() => moveRight(), 5000);
@@ -39,8 +44,14 @@ dots.addEventListener('click', dotNav);
 
 function dotNav(event) {
   let target = event.target;
-  try {changeImage(target.innerText - 1)}
-  catch(err) {changeImage(currentImage)}
+  // try {changeImage(target.innerText - 1)}
+  try {
+    console.log("dotNav is trying to call changeImage with " + target.id);
+    changeImage(target.id)
+  }
+  catch(err) {
+    console.log("dotNav was called couldn't call changeImage with a button ID, is calling chaneImage with " + currentImage);
+    changeImage(currentImage)}
 }
 /*
 TODO: see whether this works with differently-sized images. It might.
