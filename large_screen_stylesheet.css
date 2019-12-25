@@ -28,6 +28,8 @@
 
 .carousel_dots_set button {
   border-radius: 50%;
+  border-style: solid;
+  border-width: 0px;
   display: inline-block;
   color: #868686; /* font-color is just 'color' */
   background-color: #868686;
