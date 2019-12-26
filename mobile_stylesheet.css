@@ -12,7 +12,9 @@
   display: none;
 }
 
-
+.carousel_interface {
+  display: none;
+}
 
 /* old stuff */
 
