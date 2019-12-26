@@ -56,6 +56,14 @@
   width: 100%;
 }
 
+.carousel_interface {
+  display: none;
+}
+
+.carousel_images:hover .carousel_interface {
+  display: inline;
+}
+
 /* old stuff */
 
 .left_sidebar_static {
