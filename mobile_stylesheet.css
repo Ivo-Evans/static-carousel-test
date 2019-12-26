@@ -16,6 +16,22 @@
   display: none;
 }
 
+.mobile_bars {
+  display: flex;
+  height: 5px;
+  min-width: 100%;
+  justify-content: space-between;
+}
+
+.leftRightIndicator {
+  background-color: #000;
+  flex-grow: 1;
+}
+
+.playPauseIndicator {
+  background-color: #FFF;
+  flex-grow: 2;
+}
 
 /* old stuff */
 

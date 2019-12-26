@@ -64,6 +64,14 @@
   display: inline;
 }
 
+.mobile_bars {
+  display: none;
+}
+
+.mobile_instructions {
+  display: none;
+}
+
 /* old stuff */
 
 .left_sidebar_static {
