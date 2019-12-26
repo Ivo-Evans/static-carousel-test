@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container" style="display: flex;">
+    <div class="left"><p>left   </p></div>
+    <div class="touchyMuchy" style="background: pink; width: 500px; height: 500px;">
+      <p style="text-align: right">this is the touchable area</p>
+    </div>
+  </div>
+  <!-- <script>
+    let touchArea = document.querySelector(".touchyMuchy");
+
+    touchArea.addEventListener('click', selectiveCall);
+
+    function selectiveCall(event) {
+      //console.log(touchArea.getBoundingClientRect());
+      //console.log(touchArea.offsetWidth);
+      //console.log(event.offsetX);
+
+      let quadrant = touchArea.offsetWidth / 4
+      if (event.offsetX < quadrant) {
+        console.log('go back') // moveRight
+      } else if (event.offsetX > touchArea.offsetWidth - quadrant) {
+        console.log("go forward") // moveLeft
+      } else {
+        console.log('play/pause') // play/pause
+      }
+    }
+
+    touchArea.addEventListener('touchstart', logStart)
+    touchArea.addEventListener('touchend', logEnd);
+    let startX = 0;
+    let endX = 0;
+
+    function logStart(touches) {
+      fingerOneStart = touches.changedTouches[0];
+      startX = parseInt(fingerOneStart.clientX);
+    }
+
+    function logEnd(touches) {
+      fingerOneEnd = touches.changedTouches[0];
+      endX = (fingerOneEnd.clientX); // could add more conditions here like a required amount of swipe. Some 1px movement shouldn't cut it. Just clicking, right now, registers as a right swipe.
+      startX < endX ? console.log("right swipe") : console.log("left swipe")
+      touches.preventDefault();
+      /* the above line prevents click events, like the one associated with selectiveCall above, from registering. You might actually not want this. Maybe you want to work out some way for both controls to work. That would be difficult - maybe you could say, IF the pixel movement is insufficient, pass the midpoint of startX and endX to selectiveCall; otherwise, proceed with swipe. So in effect
+      - if swipe-event (x-axis px range sufficient):
+        - if left-swipe, call moveLeft
+        - if right-swipe, call moveRight
+      - if not swipe event (px range is too small):
+        - if in first quadrant, call moveLeft
+        - if in fourth quadrant, call moveRight
+        - else, call play/pause
+      */
+    } // works, and because of reassignment, no problem with left then right.
+  </script> -->
+  <!-- a different script for clarity -->
+  <script>
+    let touchArea = document.querySelector(".touchyMuchy");
+    touchArea.addEventListener('touchstart', logStart);
+    touchArea.addEventListener('touchend', mobileSliderNav);
+    let startX = 0;
+
+    function logStart(touches) { // maybe this could be a function Expression, inside the addEventListener, instead of a separate, declared function.
+      startX = parseInt(touches.changedTouches[0].clientX);
+      touches.preventDefault(); // necessary? I don't know but better to remove later than earlier
+    }
+
+    function mobileSliderNav(touchends) {
+      endX = touchends.changedTouches[0].clientX;
+
+      if (Math.abs(startX - endX) > 10) {
+        startX < endX ? console.log("left swipe") : console.log("right swipe")
+      } else {
+        let quadrant = touchArea.offsetWidth / 4;
+        let guestimatedTap = (startX + endX) / 2;
+        if (guestimatedTap < quadrant) {
+          console.log("go back")
+        } else if (guestimatedTap > touchArea.offsetWidth - quadrant) {
+          console.log("go forward")
+        } else {
+          console.log("play pause")
+        }
+      }
+      touchends.preventDefault()
+    }
+  </script>
+</body>
+</html>
