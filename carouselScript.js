@@ -39,6 +39,36 @@ function playPause() {
   playing = !playing;
 }
 
+let touchArea = document.querySelector(".carousel_images");
+touchArea.addEventListener('touchstart', logStart);
+touchArea.addEventListener('touchend', mobileSliderNav);
+let startX = 0;
+
+function logStart(touches) { // maybe this could be a function Expression, inside the addEventListener, instead of a separate, declared function.
+  startX = parseInt(touches.changedTouches[0].clientX);
+  touches.preventDefault(); // necessary? I don't know but better to remove later than earlier
+}
+
+function mobileSliderNav(touchends) {
+  let endX = touchends.changedTouches[0].clientX;
+
+  if (Math.abs(startX - endX) > 10) {
+    startX < endX ? moveLeft() : moveRight();
+  } else {
+    let quadrant = touchArea.offsetWidth / 4;
+    let guestimatedTap = (startX + endX) / 2;
+    if (guestimatedTap < quadrant) {
+      moveLeft();
+    } else if (guestimatedTap > touchArea.offsetWidth - quadrant) {
+      moveRight();
+    } else {
+      playPause();
+    }
+  }
+  touchends.preventDefault()
+}
+
+
 const dots = document.body.querySelector(".carousel_dots_set");
 dots.addEventListener('click', dotNav);
 
@@ -53,6 +83,10 @@ function dotNav(event) {
     // console.log("dotNav was called couldn't call changeImage with a button ID, is calling chaneImage with " + currentImage);
     changeImage(currentImage)}
 }
+
+
+
+
 /*
 TODO: see whether this works with differently-sized images. It might.
 TODO: add caption support?
